@@ -30,8 +30,14 @@ class Bookly extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => FeaturedBooksCubit(getIt.get<FetchFeaturedBooksUseCase>())..fetchFeaturedBooks()),
-        BlocProvider(create: (context) => NewestBooksCubit(getIt.get<FetchNewestBooksUseCase>())..fetchNewestBooks()),
+        BlocProvider(
+            create: (context) =>
+                FeaturedBooksCubit(getIt.get<FetchFeaturedBooksUseCase>())
+                  ..fetchFeaturedBooks()),
+        BlocProvider(
+            create: (context) =>
+                NewestBooksCubit(getIt.get<FetchNewestBooksUseCase>())
+                  ..fetchNewestBooks()),
       ],
       child: Platform.isAndroid
           ? MaterialApp.router(
@@ -40,7 +46,8 @@ class Bookly extends StatelessWidget {
               theme: ThemeData.dark().copyWith(
                 useMaterial3: true,
                 scaffoldBackgroundColor: kPrimaryColor,
-                textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+                textTheme:
+                    GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
               ),
             )
           : CupertinoApp.router(
@@ -50,7 +57,9 @@ class Bookly extends StatelessWidget {
                 primaryColor: kPrimaryColor,
                 scaffoldBackgroundColor: kPrimaryColor,
                 textTheme: CupertinoTextThemeData(
-                  textStyle: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme).bodyLarge,
+                  textStyle: GoogleFonts.montserratTextTheme(
+                          ThemeData.dark().textTheme)
+                      .bodyLarge,
                 ),
               ),
             ),
